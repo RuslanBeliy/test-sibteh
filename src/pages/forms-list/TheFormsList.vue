@@ -7,16 +7,14 @@ import BaseButton from '@/components/ui/BaseButton.vue';
 import BaseTitle from '@/components/ui/BaseTitle.vue';
 import FormCard from '@/components/forms/FormCard.vue';
 import { computed, onMounted, reactive } from 'vue';
+import { getAllForms } from '@/utils/helpers/forms.js';
 
-const testMock = { 'Форма регистрации участников': [] };
-
-const forms = reactive(testMock);
+const forms = reactive({});
 
 const hasForms = computed(() => Object.keys(forms).length);
 
 onMounted(() => {
-  const LS = localStorage.getItem('forms');
-  const formsLS = LS ? JSON.parse(LS) : {};
+  const formsLS = getAllForms();
   Object.assign(forms, formsLS);
 });
 </script>

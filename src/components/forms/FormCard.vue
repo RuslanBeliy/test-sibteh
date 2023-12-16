@@ -1,12 +1,18 @@
 <script setup>
 import BaseTitle from '@/components/ui/BaseTitle.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
+import { computed } from 'vue';
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true,
   },
+});
+
+const previewLink = computed(() => {
+  const id = props.title.split('_')[1];
+  return '/preview/' + id;
 });
 </script>
 
@@ -14,7 +20,7 @@ defineProps({
   <li class="form-card">
     <div class="form-card__header">
       <BaseTitle tag="h2" size="m">{{ title }}</BaseTitle>
-      <BaseButton size="m" mode="outline">Редактировать</BaseButton>
+      <BaseButton :to="previewLink" size="m" mode="outline">Просмотр формы</BaseButton>
     </div>
     <div class="form-card__user text">Автор: user 1</div>
     <div class="form-card__footer">

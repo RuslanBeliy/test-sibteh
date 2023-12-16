@@ -15,7 +15,7 @@ import BaseButton from '@/components/ui/BaseButton.vue';
         <form class="form">
           <BaseInput placeholder="Логин" bottom="10" />
           <BaseInput placeholder="Пароль" bottom="30" />
-          <BaseButton mode="fill" size="m">Вход</BaseButton>
+          <BaseButton type="button" mode="fill" size="m">Вход</BaseButton>
         </form>
       </template>
       <template #sidebar-footer>

@@ -11,6 +11,7 @@ import AddButton from '@/components/forms/AddButton.vue';
 import EditFormField from '@/components/forms/EditFormField.vue';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { addNewForm } from '@/utils/helpers/forms.js';
 
 const router = useRouter();
 
@@ -20,11 +21,7 @@ const fields = reactive([
 ]);
 
 const saveFields = () => {
-  const LS = localStorage.getItem('forms');
-  const forms = LS ? JSON.parse(LS) : {};
-  const formId = 'form_' + Date.now().toString();
-  forms[formId] = fields;
-  localStorage.setItem('forms', JSON.stringify(forms));
+  addNewForm(fields);
   router.replace('/forms-list');
 };
 
